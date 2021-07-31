@@ -1,0 +1,34 @@
+{
+   "name": "shahradelahi/coinmarketcap",
+   "description": "A PHP wrapper for CoiMarketCap API",
+   "keywords": [
+	  "coinmarketcap",
+	  "exchange",
+	  "crypto",
+	  "client",
+	  "php"
+   ],
+   "type": "library",
+   "homepage": "https://github.com/shahradelahi/coinmarketcap",
+   "license": "MIT",
+   "support": {
+	  "issues": "https://github.com/shahradelahi/coinmarketcap/issues",
+	  "source": "https://github.com/shahradelahi/coinmarketcap"
+   },
+   "authors": [
+	  {
+		 "name": "Shahrad Elahi",
+		 "homepage": "https://github.com/shahradelahi"
+	  }
+   ],
+   "require": {
+	  "ext-curl": "*",
+	  "ext-json": "*",
+	  "php": ">=8.0"
+   },
+   "autoload": {
+	  "psr-4": {
+		 "coinmarketcap\\": "src/lib/"
+	  }
+   }
+}

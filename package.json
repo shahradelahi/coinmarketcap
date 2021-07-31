@@ -1,0 +1,22 @@
+{
+   "name": "coinmarketcap",
+   "version": "1.0.0",
+   "description": "A PHP wrapper for CoinMarketCap APIs",
+   "keywords": [
+	  "coinmarketcap",
+	  "exchange",
+	  "crypto",
+	  "client",
+	  "php"
+   ],
+   "repository": {
+	  "type": "git",
+	  "url": "git+https://github.com/shahradelahi/coinmarketcap.git"
+   },
+   "author": "Shahrad Elahi (https://github.com/shahradelahi)",
+   "license": "MIT",
+   "bugs": {
+	  "url": "https://github.com/shahradelahi/coinmarketcap/issues"
+   },
+   "homepage": "https://github.com/shahradelahi/coinmarketcap#readme"
+}
