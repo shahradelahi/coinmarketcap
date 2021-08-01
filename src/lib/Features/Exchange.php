@@ -21,7 +21,7 @@ class Exchange extends ApiRequest
     public function __construct(string $apiKey)
     {
         parent::__construct($apiKey);
-        self::$apiPath .= 'cryptocurrency' . '/';
+        self::$apiPath .= 'exchange' . '/';
     }
 
     /**
@@ -58,6 +58,24 @@ class Exchange extends ApiRequest
     public function marketPairsLatest(array $params): array
     {
         return $this->sendRequest('market-pairs/latest', $params);
+    }
+
+    /**
+     * @param array $params ["id", "slug", "time_start", "time_end", "count", "interval", "convert", "convert_id"]
+     * @return array
+     */
+    public function quotesHistorical(array $params): array
+    {
+        return $this->sendRequest('quotes/historical', $params);
+    }
+
+    /**
+     * @param array $params ["id", "slug", "convert", "convert_id", "aux"]
+     * @return array
+     */
+    public function quotesLatest(array $params): array
+    {
+        return $this->sendRequest('quotes/latest', $params);
     }
 
 }

@@ -20,7 +20,7 @@ class Tools extends ApiRequest
     public function __construct(string $apiKey)
     {
         parent::__construct($apiKey);
-        self::$apiPath .= 'cryptocurrency' . '/';
+        self::$apiPath .= 'tools' . '/';
     }
 
     /**

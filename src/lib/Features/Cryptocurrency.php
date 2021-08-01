@@ -25,6 +25,15 @@ class Cryptocurrency extends ApiRequest
     }
 
     /**
+     * @param array $params ["id", "slug", "symbol", "aux"]
+     * @return array
+     */
+    public function info(array $params): array
+    {
+        return $this->sendRequest('info', $params);
+    }
+
+    /**
      * @param array $params ["listing_status", "start", "limit", "sort", "symbol", "aux"]
      * @return array
      */
@@ -34,21 +43,66 @@ class Cryptocurrency extends ApiRequest
     }
 
     /**
-     * @param array $params ["id", "slug", "symbol", "aux"]
+     * @param array $params ["date", "start", "limit", "convert", "convert_id", "sort", "sort_dir", "cryptocurrency_type", "aux"]
      * @return array
      */
-    public function info(array $params = []): array
+    public function listingsHistorical(array $params): array
     {
-        return $this->sendRequest('info', $params);
+        return $this->sendRequest('listings/historical', $params);
+    }
+
+    /**
+     * @param array $params ["id", "slug", "symbol", "start", "limit", "sort_dir", "sort", "aux", "matched_id", "matched_symbol", "category", "fee_type", "convert", "convert_id"]
+     * @return array
+     */
+    public function marketPairs(array $params): array
+    {
+        return $this->sendRequest('market-pairs/latest', $params);
     }
 
     /**
      * @param array $params ["start", "limit", "volume_24h_min", "convert", "convert_id", "sort", "sort_dir", "cryptocurrency_type", "aux"]
      * @return array
      */
-    public function listingsLatest(array $params): array
+    public function listingsLatest(array $params = []): array
     {
         return $this->sendRequest('listings/latest', $params);
+    }
+
+    /**
+     * @param array $params ["id", "slug", "symbol", "time_period", "time_start", "time_end", "count", "interval", "convert", "convert_id", "skip_invalid"]
+     * @return array
+     */
+    public function OHLCVHistorical(array $params): array
+    {
+        return $this->sendRequest('ohlcv/historical', $params);
+    }
+
+    /**
+     * @param array $params ["id", "symbol", "convert", "convert_id", "skip_invalid"]
+     * @return array
+     */
+    public function OHLCVLatest(array $params): array
+    {
+        return $this->sendRequest('ohlcv/latest', $params);
+    }
+
+    /**
+     * @param array $params ["id", "slug", "symbol", "time_period", "convert", "convert_id", "skip_invalid"]
+     * @return array
+     */
+    public function pricePerformanceStats(array $params): array
+    {
+        return $this->sendRequest('price-performance-stats/latest', $params);
+    }
+
+    /**
+     * @param array $params ["id", "symbol", "time_start", "time_end", "count", "interval", "convert", "convert_id", "aux", "skip_invalid"]
+     * @return array
+     */
+    public function quotesHistorical(array $params): array
+    {
+        return $this->sendRequest('price-quotes/historical', $params);
     }
 
     /**
