@@ -40,7 +40,7 @@ class Api
      */
     public function cryptocurrency(): Cryptocurrency
     {
-        $this->cryptocurrency = $this->cryptocurrency ?: new Cryptocurrency($this->apiKey);
+        $this->cryptocurrency = (isset($this->cryptocurrency)) ? $this->cryptocurrency : new Cryptocurrency($this->apiKey);
         return $this->cryptocurrency;
     }
 
@@ -49,7 +49,7 @@ class Api
      */
     public function fiat(): Fiat
     {
-        $this->fiat = $this->fiat ?: new Fiat($this->apiKey);
+        $this->fiat = (isset($this->fiat)) ? $this->fiat : new Fiat($this->apiKey);
         return $this->fiat;
     }
 
@@ -58,7 +58,7 @@ class Api
      */
     public function exchange(): Exchange
     {
-        $this->exchange = $this->exchange ?: new Exchange($this->apiKey);
+        $this->exchange = (isset($this->exchange)) ? $this->exchange : new Exchange($this->apiKey);
         return $this->exchange;
     }
 
@@ -67,7 +67,7 @@ class Api
      */
     public function globalMetrics(): GlobalMetrics
     {
-        $this->globalMetrics = $this->globalMetrics ?: new GlobalMetrics($this->apiKey);
+        $this->globalMetrics = (isset($this->globalMetrics)) ? $this->globalMetrics : new GlobalMetrics($this->apiKey);
         return $this->globalMetrics;
     }
 
@@ -76,7 +76,7 @@ class Api
      */
     public function tools(): Tools
     {
-        $this->tools = $this->tools ?: new Tools($this->apiKey);
+        $this->tools = (isset($this->tools)) ? $this->tools : new Tools($this->apiKey);
         return $this->tools;
     }
 
@@ -85,7 +85,7 @@ class Api
      */
     public function partners(): Partners
     {
-        $this->partners = $this->partners ?: new Partners($this->apiKey);
+        $this->partners = (isset($this->partners)) ? $this->partners : new Partners($this->apiKey);
         return $this->partners;
     }
 
