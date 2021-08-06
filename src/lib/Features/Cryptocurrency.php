@@ -1,8 +1,8 @@
 <?php
 
-namespace CoinMarketCap\Features;
+namespace coinmarketcap\Features;
 
-use CoinMarketCap\Utils\ApiRequest;
+use coinmarketcap\Utils\ApiRequest;
 
 /**
  * Cryptocurrency

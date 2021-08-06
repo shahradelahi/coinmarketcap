@@ -1,13 +1,13 @@
 <?php
 
-namespace CoinMarketCap;
+namespace coinmarketcap;
 
-use CoinMarketCap\Features\Cryptocurrency;
-use CoinMarketCap\Features\Exchange;
-use CoinMarketCap\Features\Fiat;
-use CoinMarketCap\Features\GlobalMetrics;
-use CoinMarketCap\Features\Partners;
-use CoinMarketCap\Features\Tools;
+use coinmarketcap\Features\Cryptocurrency;
+use coinmarketcap\Features\Exchange;
+use coinmarketcap\Features\Fiat;
+use coinmarketcap\Features\GlobalMetrics;
+use coinmarketcap\Features\Partners;
+use coinmarketcap\Features\Tools;
 
 /**
  * Api
