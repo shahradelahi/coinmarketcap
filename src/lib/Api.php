@@ -18,7 +18,6 @@ use coinmarketcap\Features\Tools;
  */
 class Api
 {
-
     private string $apiKey;
     private Cryptocurrency $cryptocurrency;
     private Fiat $fiat;
