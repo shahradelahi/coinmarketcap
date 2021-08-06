@@ -1,6 +1,6 @@
 <?php
 
-namespace CoinMarketCap\Utils;
+namespace coinmarketcap\Utils;
 
 class ErrorHandler
 {

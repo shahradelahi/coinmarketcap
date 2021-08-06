@@ -1,6 +1,6 @@
 <?php
 
-namespace CoinMarketCap\Utils;
+namespace coinmarketcap\Utils;
 
 /**
  * ApiRequest
@@ -41,11 +41,17 @@ abstract class ApiRequest
 
         $curl = curl_init(); // Get cURL resource
 
+        $headers = []; // HTTP Headers
+        foreach (self::$headers as $key => $value) {
+            array_push($headers, "$key: $value");
+        }
+
         // Set cURL options
         curl_setopt_array($curl, array(
             CURLOPT_URL => $endPointUrl,     // set the request URL
-            CURLOPT_HTTPHEADER => self::$headers,     // set the headers
-            CURLOPT_RETURNTRANSFER => 1         // ask for raw response instead of bool
+            CURLOPT_HTTPHEADER => $headers,     // set the headers
+            CURLOPT_RETURNTRANSFER => true,         // ask for raw response instead of bool
+            CURLOPT_FOLLOWLOCATION => true         // ask for raw response instead of bool
         ));
 
         $response = curl_exec($curl); // Send the request, save the response
