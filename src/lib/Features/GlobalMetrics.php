@@ -21,7 +21,6 @@ class GlobalMetrics extends ApiRequest
     public function __construct(string $apiKey)
     {
         parent::__construct($apiKey);
-        self::$apiPath .= 'global-metrics' . '/';
     }
 
     /**
@@ -30,7 +29,7 @@ class GlobalMetrics extends ApiRequest
      */
     public function quotesLatest(array $params = []): array
     {
-        return $this->sendRequest('quotes/latest', $params);
+        return $this->sendRequest('global-metrics/quotes/latest', $params);
     }
 
 }

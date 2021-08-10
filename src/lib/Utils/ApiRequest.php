@@ -49,15 +49,20 @@ abstract class ApiRequest
         // Set cURL options
         curl_setopt_array($curl, array(
             CURLOPT_URL => $endPointUrl,     // set the request URL
-            CURLOPT_HTTPHEADER => $headers,     // set the headers
-            CURLOPT_RETURNTRANSFER => true,         // ask for raw response instead of bool
-            CURLOPT_FOLLOWLOCATION => true         // ask for raw response instead of bool
+            CURLOPT_HTTPHEADER => $headers,  // set the headers
+            CURLOPT_RETURNTRANSFER => true,  // ask for raw response instead of bool
+            CURLOPT_FOLLOWLOCATION => true,  // follow location
         ));
 
         $response = curl_exec($curl); // Send the request, save the response
+
         curl_close($curl); // Close request
 
-        return json_decode($response, true);
+        if ($response != null) {
+            return json_decode($response, true); // Real result
+        } else {
+            return ['ok' => false, 'error_code' => 400, 'description' => "Bad Request: CoinMarketCap api has respond with null."]; // Returns error code
+        }
     }
 
 }

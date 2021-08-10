@@ -7,6 +7,7 @@ use coinmarketcap\Features\Exchange;
 use coinmarketcap\Features\Fiat;
 use coinmarketcap\Features\GlobalMetrics;
 use coinmarketcap\Features\Partners;
+use coinmarketcap\Features\Ticker;
 use coinmarketcap\Features\Tools;
 
 /**
@@ -25,6 +26,7 @@ class Api
     private GlobalMetrics $globalMetrics;
     private Tools $tools;
     private Partners $partners;
+    private Ticker $ticker;
 
     /**
      * Api constructor.
@@ -87,6 +89,15 @@ class Api
     {
         $this->partners = (isset($this->partners)) ? $this->partners : new Partners($this->apiKey);
         return $this->partners;
+    }
+
+    /**
+     * @return Ticker
+     */
+    public function ticker(): Ticker
+    {
+        $this->ticker = (isset($this->ticker)) ? $this->ticker : new Ticker();
+        return $this->ticker;
     }
 
 }

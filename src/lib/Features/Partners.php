@@ -21,7 +21,6 @@ class Partners extends ApiRequest
     public function __construct(string $apiKey)
     {
         parent::__construct($apiKey);
-        self::$apiPath .= 'partners' . '/';
     }
 
     /**
@@ -30,7 +29,7 @@ class Partners extends ApiRequest
      */
     public function flipSideFCASListingLatest(array $params = []): array
     {
-        return $this->sendRequest('flipside-crypto/fcas/listings/latest', $params);
+        return $this->sendRequest('partners/flipside-crypto/fcas/listings/latest', $params);
     }
 
     /**
@@ -40,7 +39,7 @@ class Partners extends ApiRequest
      */
     public function flipSideFCASQuotesLatest(array $params = []): array
     {
-        return $this->sendRequest('flipside-crypto/fcas/quotes/latest', $params);
+        return $this->sendRequest('partners/flipside-crypto/fcas/quotes/latest', $params);
     }
 
 }

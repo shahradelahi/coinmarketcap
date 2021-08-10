@@ -21,7 +21,6 @@ class Fiat extends ApiRequest
     public function __construct(string $apiKey)
     {
         parent::__construct($apiKey);
-        self::$apiPath .= 'fiat' . '/';
     }
 
 
@@ -31,7 +30,7 @@ class Fiat extends ApiRequest
      */
     public function map(array $params = []): array
     {
-        return $this->sendRequest('map', $params);
+        return $this->sendRequest('fiat/map', $params);
     }
 
 }

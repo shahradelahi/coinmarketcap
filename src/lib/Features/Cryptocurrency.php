@@ -21,7 +21,6 @@ class Cryptocurrency extends ApiRequest
     public function __construct(string $apiKey)
     {
         parent::__construct($apiKey);
-        self::$apiPath .= 'cryptocurrency' . '/';
     }
 
     /**
@@ -30,7 +29,7 @@ class Cryptocurrency extends ApiRequest
      */
     public function info(array $params): array
     {
-        return $this->sendRequest('info', $params);
+        return $this->sendRequest('cryptocurrency/info', $params);
     }
 
     /**
@@ -39,7 +38,7 @@ class Cryptocurrency extends ApiRequest
      */
     public function map(array $params = []): array
     {
-        return $this->sendRequest('map', $params);
+        return $this->sendRequest('cryptocurrency/map', $params);
     }
 
     /**
@@ -48,7 +47,7 @@ class Cryptocurrency extends ApiRequest
      */
     public function listingsHistorical(array $params): array
     {
-        return $this->sendRequest('listings/historical', $params);
+        return $this->sendRequest('cryptocurrency/listings/historical', $params);
     }
 
     /**
@@ -57,7 +56,7 @@ class Cryptocurrency extends ApiRequest
      */
     public function marketPairs(array $params): array
     {
-        return $this->sendRequest('market-pairs/latest', $params);
+        return $this->sendRequest('cryptocurrency/market-pairs/latest', $params);
     }
 
     /**
@@ -66,7 +65,7 @@ class Cryptocurrency extends ApiRequest
      */
     public function listingsLatest(array $params = []): array
     {
-        return $this->sendRequest('listings/latest', $params);
+        return $this->sendRequest('cryptocurrency/listings/latest', $params);
     }
 
     /**
@@ -75,7 +74,7 @@ class Cryptocurrency extends ApiRequest
      */
     public function OHLCVHistorical(array $params): array
     {
-        return $this->sendRequest('ohlcv/historical', $params);
+        return $this->sendRequest('cryptocurrency/ohlcv/historical', $params);
     }
 
     /**
@@ -84,7 +83,7 @@ class Cryptocurrency extends ApiRequest
      */
     public function OHLCVLatest(array $params): array
     {
-        return $this->sendRequest('ohlcv/latest', $params);
+        return $this->sendRequest('cryptocurrency/ohlcv/latest', $params);
     }
 
     /**
@@ -93,7 +92,7 @@ class Cryptocurrency extends ApiRequest
      */
     public function pricePerformanceStats(array $params): array
     {
-        return $this->sendRequest('price-performance-stats/latest', $params);
+        return $this->sendRequest('cryptocurrency/price-performance-stats/latest', $params);
     }
 
     /**
@@ -102,7 +101,7 @@ class Cryptocurrency extends ApiRequest
      */
     public function quotesHistorical(array $params): array
     {
-        return $this->sendRequest('price-quotes/historical', $params);
+        return $this->sendRequest('cryptocurrency/price-quotes/historical', $params);
     }
 
     /**
@@ -111,7 +110,7 @@ class Cryptocurrency extends ApiRequest
      */
     public function quotesLatest(array $params = []): array
     {
-        return $this->sendRequest('quotes/latest', $params);
+        return $this->sendRequest('cryptocurrency/quotes/latest', $params);
     }
 
 }

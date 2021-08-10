@@ -20,7 +20,6 @@ class Tools extends ApiRequest
     public function __construct(string $apiKey)
     {
         parent::__construct($apiKey);
-        self::$apiPath .= 'tools' . '/';
     }
 
     /**
@@ -29,6 +28,6 @@ class Tools extends ApiRequest
      */
     public function priceConversion(array $params = []): array
     {
-        return $this->sendRequest('price-conversion', $params);
+        return $this->sendRequest('tools/price-conversion', $params);
     }
 }
