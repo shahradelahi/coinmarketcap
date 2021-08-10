@@ -7,7 +7,7 @@ use coinmarketcap\Components\ClientConfig;
 use coinmarketcap\Exceptions\BadOpcodeException;
 use coinmarketcap\Exceptions\BadUriException;
 use coinmarketcap\Exceptions\ConnectionException;
-use coinmarketcap\WebSocketClient;
+use coinmarketcap\Utils\WebSocketClient;
 use Exception;
 
 class Ticker
