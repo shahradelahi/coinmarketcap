@@ -3,12 +3,12 @@
 namespace coinmarketcap\Features;
 
 
+use coinmarketcap\Components\ClientConfig;
+use coinmarketcap\Exceptions\BadOpcodeException;
+use coinmarketcap\Exceptions\BadUriException;
+use coinmarketcap\Exceptions\ConnectionException;
+use coinmarketcap\WebSocketClient;
 use Exception;
-use WSSC\Components\ClientConfig;
-use WSSC\Exceptions\BadOpcodeException;
-use WSSC\Exceptions\BadUriException;
-use WSSC\Exceptions\ConnectionException;
-use WSSC\WebSocketClient;
 
 class Ticker
 {

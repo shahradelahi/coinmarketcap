@@ -22,9 +22,9 @@
 	  }
    ],
    "require": {
-	  "arthurkushman/php-wss": "^2.0",
 	  "ext-pcntl": "*",
 	  "ext-curl": "*",
+	  "ext-json": "*",
 	  "php": ">=8.0"
    },
    "autoload": {
