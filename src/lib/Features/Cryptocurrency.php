@@ -38,8 +38,7 @@ class Cryptocurrency extends ApiRequest
      */
     public function map(array $params = []): array
     {
-        $map = $this->sendPRequest('cryptocurrency/map/all', $params);
-        return ['status' => $map['status'], 'data' => $map['cryptoCurrencyMap']];
+        return $this->sendRequest('cryptocurrency/map', $params);
     }
 
     /**
@@ -57,7 +56,7 @@ class Cryptocurrency extends ApiRequest
      */
     public function marketPairs(array $params): array
     {
-        return $this->sendPRequest('cryptocurrency/market-pairs/latest', $params);
+        return $this->sendRequest('cryptocurrency/market-pairs/latest', $params);
     }
 
     /**
