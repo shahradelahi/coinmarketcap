@@ -65,4 +65,31 @@ abstract class ApiRequest
         }
     }
 
+    public static function sendPRequest($endpoint, array $parameters = []): array
+    {
+        $url = "https://api.coinmarketcap.com/data-api/v3/" . $endpoint;
+
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+
+        // Set cURL headers
+        $headers = array(
+            "accept: application/json",
+            "origin: https://coinmarketcap.com",
+            "referer: https://coinmarketcap.com/",
+            "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36",
+        );
+
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
+
+        $response = curl_exec($curl); // Send the request, save the response
+
+        curl_close($curl); // Close request
+
+        return json_decode($response, true); // Real result here
+    }
+
 }
