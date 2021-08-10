@@ -1,6 +1,6 @@
 <?php
 
-namespace coinmarketcap;
+namespace coinmarketcap\Utils;
 
 use coinmarketcap\Components\Connection;
 use coinmarketcap\Components\OriginComponent;

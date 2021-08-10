@@ -1,6 +1,6 @@
 <?php
 
-namespace coinmarketcap;
+namespace coinmarketcap\Utils;
 
 use coinmarketcap\Components\ClientConfig;
 use coinmarketcap\Components\WscMain;
