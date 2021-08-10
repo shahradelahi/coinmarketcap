@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpArrayShapeAttributeCanBeAddedInspection */
 
 namespace coinmarketcap\Features;
 
@@ -111,6 +111,24 @@ class Cryptocurrency extends ApiRequest
     public function quotesLatest(array $params = []): array
     {
         return $this->sendRequest('cryptocurrency/quotes/latest', $params);
+    }
+
+    /**
+     * @param array $params ["id", "range"]
+     * @return array
+     */
+    public function chart(array $params): array
+    {
+        return $this->sendPRequest('cryptocurrency/detail/chart', $params);
+    }
+
+    /**
+     * @param array $params ["slug", "size", "page"]
+     * @return array
+     */
+    public function headlines(array $params): array
+    {
+        return $this->sendPRequest('headlines/coinPage/news/slug', $params);
     }
 
 }
