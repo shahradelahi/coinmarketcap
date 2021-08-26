@@ -5,7 +5,7 @@ namespace coinmarketcap\Features;
 use coinmarketcap\Utils\ApiRequest;
 
 /**
- * Fiat
+ * Exchange
  *
  * @link    https://github.com/shahradelahi/coinmarketcap
  * @author  Shahrad Elahi (https://github.com/shahradelahi)
@@ -15,7 +15,7 @@ class Exchange extends ApiRequest
 {
 
     /**
-     * Cryptocurrency constructor.
+     * Exchange constructor.
      * @param string $apiKey
      */
     public function __construct(string $apiKey)
@@ -24,21 +24,25 @@ class Exchange extends ApiRequest
     }
 
     /**
+     * This method is using private API key.
+     *
      * @param array $params ["id", "slug", "aux"]
      * @return array
      */
     public function info(array $params = []): array
     {
-        return $this->sendRequest('exchange/info', $params);
+        return $this->sendPrivate('https://web-api.coinmarketcap.com/v1/exchange/info', $params);
     }
 
     /**
-     * @param array $params ["listing_status", "slug", "start", "limit", "sort", "aux", "crypto_id"]
+     * This method is using private API key.
+     *
+     * @param array $params ["limit"]
      * @return array
      */
-    public function map(array $params = []): array
+    public function listing(array $params = []): array
     {
-        return $this->sendRequest('exchange/map', $params);
+        return $this->sendPrivate('https://api.coinmarketcap.com/data-api/v3/exchange/listing', $params);
     }
 
     /**
@@ -47,34 +51,40 @@ class Exchange extends ApiRequest
      */
     public function listingsLatest(array $params): array
     {
-        return $this->sendRequest('exchange/listings/latest', $params);
+        return $this->sendPrivate('https://web-api.coinmarketcap.com/v1/exchange/listings/latest', $params);
     }
 
     /**
+     * This method is using private API key.
+     *
      * @param array $params ["id", "slug", "start", "limit", "aux", "matched_id", "matched_symbol", "category", "fee_type", "convert", "convert_id"]
      * @return array
      */
     public function marketPairsLatest(array $params): array
     {
-        return $this->sendRequest('exchange/market-pairs/latest', $params);
+        return $this->sendPrivate('https://api.coinmarketcap.com/data-api/v3/exchange/market-pairs/latest', $params);
     }
 
     /**
+     * This method is using private API key.
+     *
      * @param array $params ["id", "slug", "time_start", "time_end", "count", "interval", "convert", "convert_id"]
      * @return array
      */
     public function quotesHistorical(array $params): array
     {
-        return $this->sendRequest('exchange/quotes/historical', $params);
+        return $this->sendPrivate('https://web-api.coinmarketcap.com/v1/exchange/quotes/historical', $params);
     }
 
     /**
+     * This method is using private API key.
+     *
      * @param array $params ["id", "slug", "convert", "convert_id", "aux"]
      * @return array
      */
     public function quotesLatest(array $params): array
     {
-        return $this->sendRequest('exchange/quotes/latest', $params);
+        return $this->sendPrivate('https://web-api.coinmarketcap.com/v1/exchange/quotes/latest', $params);
     }
 
 }

@@ -33,6 +33,17 @@ class Cryptocurrency extends ApiRequest
     }
 
     /**
+     * This method is using private API key.
+     *
+     * @param array $params ["id", "slug", "symbol", "aux"]
+     * @return array
+     */
+    public function detail(array $params): array
+    {
+        return $this->sendPrivate('https://api.coinmarketcap.com/data-api/v3/cryptocurrency/detail', $params);
+    }
+
+    /**
      * @param array $params ["listing_status", "start", "limit", "sort", "symbol", "aux"]
      * @return array
      */
@@ -114,21 +125,46 @@ class Cryptocurrency extends ApiRequest
     }
 
     /**
+     * This method is using private API key.
+     *
      * @param array $params ["id", "range"]
      * @return array
      */
     public function chart(array $params): array
     {
-        return $this->sendPRequest('cryptocurrency/detail/chart', $params);
+        return $this->sendPrivate('https://api.coinmarketcap.com/data-api/v3/cryptocurrency/detail/chart', $params);
     }
 
     /**
+     * This method is using private API key.
+     *
      * @param array $params ["slug", "size", "page"]
      * @return array
      */
     public function headlines(array $params): array
     {
-        return $this->sendPRequest('headlines/coinPage/news/slug', $params);
+        return $this->sendPrivate('https://api.coinmarketcap.com/data-api/v3/headlines/coinPage/news/slug', $params);
+    }
+
+    /**
+     * This method is using private API key.
+     *
+     * @param array $params ["id", "convertId", "timeStart", "timeEnd"]
+     * @return array
+     */
+    public function historical(array $params): array
+    {
+        return $this->sendPrivate('https://api.coinmarketcap.com/data-api/v3/cryptocurrency/historical', $params);
+    }
+
+    /**
+     * This method is using private API key.
+     *
+     * @return array
+     */
+    public function topSearch(): array
+    {
+        return $this->sendPrivate('https://api.coinmarketcap.com/data-api/v3/topsearch/rank', []);
     }
 
 }

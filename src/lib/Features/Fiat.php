@@ -15,7 +15,7 @@ class Fiat extends ApiRequest
 {
 
     /**
-     * Cryptocurrency constructor.
+     * Fiat constructor.
      * @param string $apiKey
      */
     public function __construct(string $apiKey)
@@ -25,12 +25,14 @@ class Fiat extends ApiRequest
 
 
     /**
+     * This method is using private API key.
+     *
      * @param array $params ["start", "limit", "sort", "include_metals"]
      * @return array
      */
     public function map(array $params = []): array
     {
-        return $this->sendRequest('fiat/map', $params);
+        return $this->sendPrivate('https://web-api.coinmarketcap.com/v1/fiat/map', $params);
     }
 
 }

@@ -10,6 +10,13 @@ use coinmarketcap\Exceptions\ConnectionException;
 use coinmarketcap\Utils\WebSocketClient;
 use Exception;
 
+/**
+ * Ticker
+ *
+ * @link    https://github.com/shahradelahi/coinmarketcap
+ * @author  Shahrad Elahi (https://github.com/shahradelahi)
+ * @license https://github.com/shahradelahi/coinmarketcap/blob/master/LICENSE (MIT License)
+ */
 class Ticker
 {
 
@@ -25,7 +32,7 @@ class Ticker
             $ClientConfig->setFragmentSize(8096);
             $ClientConfig->setTimeout(15);
             $WebSocketClient = new WebSocketClient('wss://stream.coinmarketcap.com:443/price/latest', $ClientConfig);
-            $WebSocketClient->send('{"method":"subscribe","id":"price","data":{"cryptoIds":[' . $Settings['ids'] . '],"index":null}}');
+            $WebSocketClient->send('{"method":"subscribe","id":"price","data":{"cryptoIds":[' . $Settings['ids'] . '],"index":"detail"}}');
             while ($Settings['close_time'] > time()) {
                 if (($message = $WebSocketClient->receive()) != "") {
                     $JsonMessage = json_decode($message, true);

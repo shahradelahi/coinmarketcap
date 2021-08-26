@@ -65,10 +65,8 @@ abstract class ApiRequest
         }
     }
 
-    public static function sendPRequest($endpoint, array $parameters = []): array
+    protected static function sendPrivate(string $url, array $parameters = []): array
     {
-        $url = "https://api.coinmarketcap.com/data-api/v3/" . $endpoint;
-
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

@@ -24,12 +24,14 @@ class GlobalMetrics extends ApiRequest
     }
 
     /**
+     * This method is using private API key.
+     *
      * @param array $params ["convert", "convert_id"]
      * @return array
      */
     public function quotesLatest(array $params = []): array
     {
-        return $this->sendRequest('global-metrics/quotes/latest', $params);
+        return $this->sendPrivate('https://web-api.coinmarketcap.com/v1/global-metrics/quotes/latest', $params);
     }
 
 }
