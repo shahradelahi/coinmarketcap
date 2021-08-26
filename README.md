@@ -1,4 +1,4 @@
-> **Help wanted:** This library is officially depreciated and will only be actively maintained by the community. <br/> ***Pull requests are welcome.***
+> **Help wanted:** I don't have enough time to keep updating this library, if you can, don't be shy. <br/> ***Pull requests are welcome.***
 
 # PHP CoinMarketCap API
 
