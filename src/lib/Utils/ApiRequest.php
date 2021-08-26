@@ -67,6 +67,10 @@ abstract class ApiRequest
 
     protected static function sendPrivate(string $url, array $parameters = []): array
     {
+        $queryString = http_build_query($parameters); // query string encode the parameters
+
+        $url = $url . "?" . $queryString; // create the request URL
+
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
