@@ -8,9 +8,10 @@ the [CoinMarketCap API](https://coinmarketcap.com/api/documentation/v1).
 #### Requirements
 
 ```
+ext-pcntl: *
 ext-curl: *
 ext-json: *
-php: >=8.0
+php: >=7.4
 ```
 
 #### Installation
