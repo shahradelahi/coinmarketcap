@@ -23,9 +23,10 @@ class Ticker
     /**
      * @param array $Settings ['close_time', 'ids']
      * @param $Query
+     * @param $Extra
      * @throws Exception
      */
-    public function setTicker(array $Settings, $Query)
+    public function setTicker(array $Settings, $Query, $Extra)
     {
         try {
             $ClientConfig = new ClientConfig();
@@ -36,7 +37,7 @@ class Ticker
             while ($Settings['close_time'] > time()) {
                 if (($message = $WebSocketClient->receive()) != "") {
                     $JsonMessage = json_decode($message, true);
-                    if ($JsonMessage['id'] == "price") $Query($JsonMessage['d']);
+                    if ($JsonMessage['id'] == "price") $Query($JsonMessage['d'], $Extra);
                 }
             }
 
