@@ -12,7 +12,7 @@ namespace coinmarketcap\Utils;
 abstract class ApiRequest
 {
 
-    protected static string $apiPath = "https://pro-api.coinmarketcap.com/v1/";
+    protected const apiPath = "https://pro-api.coinmarketcap.com/v1/";
 
     private static array $headers = [
         'Accept' => 'application/json',
@@ -35,48 +35,54 @@ abstract class ApiRequest
      */
     protected static function sendRequest(string $endpoint, array $parameters = []): array
     {
-        $queryString = http_build_query($parameters); // query string encode the parameters
+        $queryString = http_build_query($parameters);
 
-        $endPointUrl = self::$apiPath . $endpoint . "?" . $queryString; // create the request URL
+        $endPointUrl = self::apiPath . $endpoint . "?" . $queryString;
 
-        $curl = curl_init(); // Get cURL resource
+        $curl = curl_init();
 
-        $headers = []; // HTTP Headers
+        $headers = [];
         foreach (self::$headers as $key => $value) {
-            array_push($headers, "$key: $value");
+            $headers[] = "$key: $value";
         }
 
-        // Set cURL options
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => $endPointUrl,     // set the request URL
-            CURLOPT_HTTPHEADER => $headers,  // set the headers
-            CURLOPT_RETURNTRANSFER => true,  // ask for raw response instead of bool
-            CURLOPT_FOLLOWLOCATION => true,  // follow location
-        ));
+        curl_setopt_array($curl, [
+            CURLOPT_URL => $endPointUrl,
+            CURLOPT_HTTPHEADER => $headers,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+        ]);
 
-        $response = curl_exec($curl); // Send the request, save the response
+        $response = curl_exec($curl);
 
-        curl_close($curl); // Close request
+        curl_close($curl);
 
         if ($response != null) {
-            return json_decode($response, true); // Real result
+            return json_decode($response, true);
         } else {
-            return ['ok' => false, 'error_code' => 400, 'description' => "Bad Request: CoinMarketCap api has respond with null."]; // Returns error code
+            return [
+                'ok' => false,
+                'error_code' => 400,
+                'description' => "Bad Request: CoinMarketCap api has respond with null."
+            ];
         }
     }
 
+    /**
+     * @param string $url
+     * @param array $parameters
+     * @return array
+     */
     protected static function sendPrivate(string $url, array $parameters = []): array
     {
-        $queryString = http_build_query($parameters); // query string encode the parameters
-
-        $url = $url . "?" . $queryString; // create the request URL
+        $queryString = http_build_query($parameters);
+        $url = $url . "?" . $queryString;
 
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
 
-        // Set cURL headers
         $headers = array(
             "accept: application/json",
             "origin: https://coinmarketcap.com",
@@ -86,12 +92,19 @@ abstract class ApiRequest
 
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
+        $response = curl_exec($curl);
 
-        $response = curl_exec($curl); // Send the request, save the response
+        if (curl_getinfo($curl, CURLINFO_HTTP_CODE) != 200) {
+            return [
+                'ok' => false,
+                'error_code' => curl_getinfo($curl, CURLINFO_HTTP_CODE),
+                'description' => "Bad Request: CoinMarketCap api has respond with null."
+            ];
+        }
 
-        curl_close($curl); // Close request
+        curl_close($curl);
 
-        return json_decode($response, true); // Real result here
+        return json_decode($response, true);
     }
 
 }

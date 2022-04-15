@@ -1,6 +1,6 @@
 {
    "name": "shahradelahi/coinmarketcap",
-   "description": "A PHP library for the CoinMarketCap APIs",
+   "description": "A PHP library for the CoinMarketCap API Endpoints",
    "keywords": [
 	  "coinmarketcap",
 	  "exchange",
@@ -23,8 +23,8 @@
    ],
    "require": {
 	  "ext-pcntl": "*",
-	  "ext-curl": "*",
 	  "ext-json": "*",
+	  "ext-curl": "*",
 	  "php": ">=7.4"
    },
    "autoload": {
