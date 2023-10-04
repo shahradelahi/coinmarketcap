@@ -58,7 +58,16 @@ abstract class ApiRequest
         curl_close($curl);
 
         if ($response != null) {
-            return json_decode($response, true);
+            $decoded = json_decode($response, true) ?? []; // Could return null after json_decode
+            $err = json_last_error();
+            if ($err !== JSON_ERROR_NONE) {
+                return [
+                    'ok' => false,
+                    'error_code' => 500,
+                    'description' => "Cannot decode response. JSON error code: $err"
+                ];
+            }
+            return $decoded;
         } else {
             return [
                 'ok' => false,
